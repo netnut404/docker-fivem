@@ -1,7 +1,7 @@
 ARG FIVEM_NUM=3377
 ARG FIVEM_VER=3377-8105af45f85037af944badde80d58f38d103f798
 ARG DATA_VER=dd38bd01923a0595ecccef8026f1310304d7b0e3
-FROM wodby/mariadb:latest as builder
+FROM alpine as builder
 ARG FIVEM_VER
 ARG DATA_VER
 
@@ -17,9 +17,6 @@ RUN wget -O- http://runtime.fivem.net/artifacts/fivem/build_proot_linux/master/$
     \
  && apk -p $PWD add tini mariadb-dev tzdata
 
-ADD server.cfg opt/cfx-server-data
-ADD resources.tar opt/cfx-server-data
-ADD database.sql opt/cfx-server-data
 ADD entrypoint usr/bin/entrypoint
 RUN chmod +x /output/usr/bin/entrypoint
 
@@ -38,23 +35,12 @@ LABEL org.label-schema.name="FiveM" \
 
 COPY --from=builder /output/ /
 
-
-
 WORKDIR /config
 
-RUN apk add --no-cache mariadb mariadb-client mariadb-server-utils pwgen tzdata && \
+RUN apk add --no-cache pwgen tzdata && \
     rm -f /var/cache/apk/*
 
-ADD files/run.sh /scripts/run.sh
-RUN mkdir /docker-entrypoint-initdb.d && \
-    mkdir /scripts/pre-exec.d && \
-    mkdir /scripts/pre-init.d && \
-    chmod -R 755 /scripts
-
-EXPOSE 3306
 EXPOSE 30120
-
-VOLUME ["/var/lib/mysql"]
 
 # Default to an empty CMD, so we can use it to add seperate args to the binary
 CMD [""]
