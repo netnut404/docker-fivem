@@ -37,9 +37,6 @@ COPY --from=builder /output/ /
 
 WORKDIR /config
 
-RUN apk add --no-cache pwgen tzdata && \
-    rm -f /var/cache/apk/*
-
 EXPOSE 30120
 
 # Default to an empty CMD, so we can use it to add seperate args to the binary
