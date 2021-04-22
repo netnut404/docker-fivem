@@ -14,7 +14,7 @@ This bundle is made with a inbuild Mariadb server.
 [![Latest Version](https://images.microbadger.com/badges/version/henkallsn/fivem_esx_bundle.svg)][dockerhub]
 [![Docker Pulls](https://img.shields.io/docker/pulls/henkallsn/fivem_esx_bundle.svg)][dockerhub]
 [![Docker Stars](https://img.shields.io/docker/stars/henkallsn/fivem_esx_bundle.svg)][dockerhub]
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=RVCZJCWKD9CSW&currency_code=EUR&source=url)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/paypalme/henkallsn)
 
 ## Licence Key
 
